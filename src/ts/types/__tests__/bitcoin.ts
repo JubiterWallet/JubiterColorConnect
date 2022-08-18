@@ -1,8 +1,8 @@
-import TrezorConnect from '../index';
+import JuBiterConnect from '../index';
 
 export const getAddress = async () => {
     // regular
-    const singleAddress = await TrezorConnect.getAddress({ path: 'm/44' });
+    const singleAddress = await JuBiterConnect.getAddress({ path: 'm/44' });
     if (singleAddress.success) {
         const { payload } = singleAddress;
         payload.address;
@@ -15,7 +15,7 @@ export const getAddress = async () => {
     }
 
     // bundle
-    const bundleAddress = await TrezorConnect.getAddress({ bundle: [{ path: 'm/44' }] });
+    const bundleAddress = await JuBiterConnect.getAddress({ bundle: [{ path: 'm/44' }] });
     if (bundleAddress.success) {
         bundleAddress.payload.forEach(item => {
             item.address;
@@ -29,7 +29,7 @@ export const getAddress = async () => {
     }
 
     // with all possible params
-    TrezorConnect.getAddress({
+    JuBiterConnect.getAddress({
         device: {
             path: '1',
             instance: 1,
@@ -48,18 +48,18 @@ export const getAddress = async () => {
 
     // with invalid params
     // @ts-expect-error
-    TrezorConnect.getAddress();
+    JuBiterConnect.getAddress();
     // @ts-expect-error
-    TrezorConnect.getAddress({ coin: 'btc' });
+    JuBiterConnect.getAddress({ coin: 'btc' });
     // @ts-expect-error
-    TrezorConnect.getAddress({ path: 1 });
+    JuBiterConnect.getAddress({ path: 1 });
     // @ts-expect-error
-    TrezorConnect.getAddress({ bundle: 1 });
+    JuBiterConnect.getAddress({ bundle: 1 });
 };
 
 export const getPublicKey = async () => {
     // regular
-    const singlePK = await TrezorConnect.getPublicKey({ path: 'm/44' });
+    const singlePK = await JuBiterConnect.getPublicKey({ path: 'm/44' });
     if (singlePK.success) {
         const { payload } = singlePK;
         payload.path;
@@ -78,7 +78,7 @@ export const getPublicKey = async () => {
     }
 
     // bundle
-    const bundlePK = await TrezorConnect.getPublicKey({ bundle: [{ path: 'm/44' }] });
+    const bundlePK = await JuBiterConnect.getPublicKey({ bundle: [{ path: 'm/44' }] });
     if (bundlePK.success) {
         bundlePK.payload.forEach(item => {
             item.path;
@@ -100,14 +100,14 @@ export const getPublicKey = async () => {
 
 export const signTransaction = async () => {
     // minimum required params
-    TrezorConnect.signTransaction({
+    JuBiterConnect.signTransaction({
         inputs: [],
         outputs: [],
         coin: 'btc',
     });
 
     // with all possible params
-    const sign = await TrezorConnect.signTransaction({
+    const sign = await JuBiterConnect.signTransaction({
         inputs: [
             {
                 address_n: [0],
@@ -373,11 +373,11 @@ export const signTransaction = async () => {
 
     // with invalid params
     // @ts-expect-error
-    TrezorConnect.signTransaction();
+    JuBiterConnect.signTransaction();
     // @ts-expect-error
-    TrezorConnect.signTransaction({ coin: 'btc' });
+    JuBiterConnect.signTransaction({ coin: 'btc' });
 
-    TrezorConnect.signTransaction({
+    JuBiterConnect.signTransaction({
         inputs: [
             {
                 address_n: [0],
@@ -428,22 +428,22 @@ export const signTransaction = async () => {
 };
 
 export const pushTransaction = async () => {
-    const push = await TrezorConnect.pushTransaction({ tx: 'serializedTX', coin: 'btc' });
+    const push = await JuBiterConnect.pushTransaction({ tx: 'serializedTX', coin: 'btc' });
     if (push.success) {
         push.payload.txid;
     }
 
     // with invalid params
     // @ts-expect-error
-    TrezorConnect.pushTransaction();
+    JuBiterConnect.pushTransaction();
     // @ts-expect-error
-    TrezorConnect.pushTransaction({ coin: 'btc' });
+    JuBiterConnect.pushTransaction({ coin: 'btc' });
 };
 
 export const composeTransaction = async () => {
     // Method with mixed params and mixed responses
 
-    const compose = await TrezorConnect.composeTransaction({
+    const compose = await JuBiterConnect.composeTransaction({
         outputs: [],
         coin: 'btc',
     });
@@ -451,7 +451,7 @@ export const composeTransaction = async () => {
         compose.payload.serializedTx;
     }
 
-    const precompose = await TrezorConnect.composeTransaction({
+    const precompose = await JuBiterConnect.composeTransaction({
         outputs: [],
         account: {
             path: 'm/49',
@@ -488,9 +488,9 @@ export const composeTransaction = async () => {
 
 export const getAccountInfo = async () => {
     // minimum required params
-    TrezorConnect.getAccountInfo({ coin: 'btc' });
+    JuBiterConnect.getAccountInfo({ coin: 'btc' });
 
-    const account = await TrezorConnect.getAccountInfo({
+    const account = await JuBiterConnect.getAccountInfo({
         coin: 'btc',
         path: 'm/44',
         descriptor: 'xpub',
@@ -559,13 +559,13 @@ export const getAccountInfo = async () => {
 };
 
 export const signMessage = async () => {
-    const sign = await TrezorConnect.signMessage({ path: 'm/44', coin: 'btc', message: 'foo' });
+    const sign = await JuBiterConnect.signMessage({ path: 'm/44', coin: 'btc', message: 'foo' });
     if (sign.success) {
         const { payload } = sign;
         payload.address;
         payload.signature;
     }
-    const verify = await TrezorConnect.verifyMessage({
+    const verify = await JuBiterConnect.verifyMessage({
         address: 'a',
         signature: 'a',
         message: 'foo',

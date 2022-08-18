@@ -1,9 +1,9 @@
 /* @flow */
-import TrezorConnect from '../../index';
+import JuBiterConnect from '../../index';
 
 export const binanceGetAddress = async () => {
     // regular
-    const singleAddress = await TrezorConnect.binanceGetAddress({ path: 'm/44' });
+    const singleAddress = await JuBiterConnect.binanceGetAddress({ path: 'm/44' });
     (singleAddress.success: boolean);
     if (singleAddress.success) {
         const { payload } = singleAddress;
@@ -13,7 +13,7 @@ export const binanceGetAddress = async () => {
     }
 
     // bundle
-    const bundleAddress = await TrezorConnect.binanceGetAddress({ bundle: [{ path: 'm/44' }] });
+    const bundleAddress = await JuBiterConnect.binanceGetAddress({ bundle: [{ path: 'm/44' }] });
     (bundleAddress.success: boolean);
     if (bundleAddress.success) {
         bundleAddress.payload.forEach(item => {
@@ -26,7 +26,7 @@ export const binanceGetAddress = async () => {
     }
 
     // with all possible params
-    TrezorConnect.binanceGetAddress({
+    JuBiterConnect.binanceGetAddress({
         device: {
             path: '1',
             instance: 1,
@@ -42,7 +42,7 @@ export const binanceGetAddress = async () => {
     });
 
     // $FlowExpectedError: payload is Address
-    const e1 = await TrezorConnect.binanceGetAddress({ path: 'm/44' });
+    const e1 = await JuBiterConnect.binanceGetAddress({ path: 'm/44' });
     if (e1.success) {
         e1.payload.forEach(item => {
             (item.address: string);
@@ -50,23 +50,23 @@ export const binanceGetAddress = async () => {
     }
 
     // $FlowExpectedError: payload is Address[]
-    const e2 = await TrezorConnect.binanceGetAddress({ bundle: [{ path: 'm/44' }] });
+    const e2 = await JuBiterConnect.binanceGetAddress({ bundle: [{ path: 'm/44' }] });
     if (e2.success) e2.payload.address;
 
     // with invalid params
     // $FlowIssue
-    TrezorConnect.binanceGetAddress();
+    JuBiterConnect.binanceGetAddress();
     // $FlowIssue
-    TrezorConnect.binanceGetAddress({ useEmptyPassphrase: true });
+    JuBiterConnect.binanceGetAddress({ useEmptyPassphrase: true });
     // $FlowIssue
-    TrezorConnect.binanceGetAddress({ path: 1 });
+    JuBiterConnect.binanceGetAddress({ path: 1 });
     // $FlowIssue
-    TrezorConnect.binanceGetAddress({ bundle: 1 });
+    JuBiterConnect.binanceGetAddress({ bundle: 1 });
 };
 
 export const binanceGetPublicKey = async () => {
     // regular
-    const singlePK = await TrezorConnect.binanceGetPublicKey({ path: 'm/44' });
+    const singlePK = await JuBiterConnect.binanceGetPublicKey({ path: 'm/44' });
     (singlePK.success: boolean);
     if (singlePK.success) {
         const { payload } = singlePK;
@@ -76,7 +76,7 @@ export const binanceGetPublicKey = async () => {
     }
 
     // bundle
-    const bundlePK = await TrezorConnect.binanceGetPublicKey({ bundle: [{ path: 'm/44' }] });
+    const bundlePK = await JuBiterConnect.binanceGetPublicKey({ bundle: [{ path: 'm/44' }] });
     (bundlePK.success: boolean);
     if (bundlePK.success) {
         bundlePK.payload.forEach(item => {
@@ -90,7 +90,7 @@ export const binanceGetPublicKey = async () => {
 
     // errors
     // $FlowExpectedError: payload is PublicKey
-    const e1 = await TrezorConnect.binanceGetPublicKey({ path: 'm/44' });
+    const e1 = await JuBiterConnect.binanceGetPublicKey({ path: 'm/44' });
     if (e1.success) {
         e1.payload.forEach(item => {
             (item.path: string);
@@ -98,12 +98,12 @@ export const binanceGetPublicKey = async () => {
     }
 
     // $FlowExpectedError: payload is PublicKey[]
-    const e2 = await TrezorConnect.binanceGetPublicKey({ bundle: [{ path: 'm/44' }] });
+    const e2 = await JuBiterConnect.binanceGetPublicKey({ bundle: [{ path: 'm/44' }] });
     if (e2.success) e2.payload.path;
 };
 
 export const binanceSignTransaction = async () => {
-    const sign = await TrezorConnect.binanceSignTransaction({
+    const sign = await JuBiterConnect.binanceSignTransaction({
         path: 'm/44',
         transaction: {
             chain_id: 'Binance-Chain-Nile',

@@ -7,16 +7,26 @@
     <title>JuBiterConnect | JuBiter</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <meta name="author" content="JuBiter info@JuBiter.io" />
+    <meta name="author" content="JuBiter info@trezor.io" />
     <meta name="robots" content="noindex, nofollow" />
     <meta name="title" content="JuBiter Connect" />
     <meta name="theme-color" content="#ffffff" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="-1" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html, body {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 500px;
+            min-width: 328px;
+        }
+    </style>
 </head>
 <body>
-    <main>
-        <h3>Chrome extension needs permissions to communicate with USB device.</h3>
-        <button>Check for devices</button>
-    </main>
+    <script type="text/javascript" src="./vendor/jubiter-usb-permissions.js"></script>
 </body>

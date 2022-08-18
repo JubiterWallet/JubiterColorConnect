@@ -1,5 +1,5 @@
 /* @flow */
-import TrezorConnect from '../../index';
+import JuBiterConnect from '../../index';
 import {
     CardanoAddressType,
     CardanoCertificateType,
@@ -11,7 +11,7 @@ import {
 
 export const cardanoGetAddress = async () => {
     // regular
-    const singleAddress = await TrezorConnect.cardanoGetAddress({
+    const singleAddress = await JuBiterConnect.cardanoGetAddress({
         addressParameters: {
             addressType: CardanoAddressType.BASE,
             path: 'm/44',
@@ -52,7 +52,7 @@ export const cardanoGetAddress = async () => {
     }
 
     // bundle
-    const bundleAddress = await TrezorConnect.cardanoGetAddress({
+    const bundleAddress = await JuBiterConnect.cardanoGetAddress({
         bundle: [
             {
                 addressParameters: {
@@ -99,7 +99,7 @@ export const cardanoGetAddress = async () => {
     }
 
     // with all possible params
-    TrezorConnect.cardanoGetAddress({
+    JuBiterConnect.cardanoGetAddress({
         device: {
             path: '1',
             instance: 1,
@@ -129,7 +129,7 @@ export const cardanoGetAddress = async () => {
     });
 
     // $FlowExpectedError: payload is Address
-    const e1 = await TrezorConnect.cardanoGetAddress({
+    const e1 = await JuBiterConnect.cardanoGetAddress({
         addressParameters: {
             addressType: CardanoAddressType.BASE,
             path: 'm/44',
@@ -143,7 +143,7 @@ export const cardanoGetAddress = async () => {
     }
 
     // $FlowExpectedError: payload is Address[]
-    const e2 = await TrezorConnect.cardanoGetAddress({
+    const e2 = await JuBiterConnect.cardanoGetAddress({
         bundle: [
             {
                 addressParameters: {
@@ -160,17 +160,17 @@ export const cardanoGetAddress = async () => {
 
     // with invalid params
     // $FlowExpectedError
-    TrezorConnect.cardanoGetAddress();
+    JuBiterConnect.cardanoGetAddress();
     // $FlowExpectedError
-    TrezorConnect.cardanoGetAddress({ coin: 'btc' });
+    JuBiterConnect.cardanoGetAddress({ coin: 'btc' });
     // $FlowExpectedError
-    TrezorConnect.cardanoGetAddress({ addressParameters: { path: 1 } });
+    JuBiterConnect.cardanoGetAddress({ addressParameters: { path: 1 } });
     // $FlowExpectedError
-    TrezorConnect.cardanoGetAddress({ bundle: 1 });
+    JuBiterConnect.cardanoGetAddress({ bundle: 1 });
 };
 
 export const cardanoGetNativeScriptHash = async () => {
-    const result = await TrezorConnect.cardanoGetNativeScriptHash({
+    const result = await JuBiterConnect.cardanoGetNativeScriptHash({
         script: {
             type: CardanoNativeScriptType.PUB_KEY,
             scripts: [
@@ -203,7 +203,7 @@ export const cardanoGetNativeScriptHash = async () => {
 
 export const cardanoGetPublicKey = async () => {
     // regular
-    const singlePK = await TrezorConnect.cardanoGetPublicKey({ path: 'm/44' });
+    const singlePK = await JuBiterConnect.cardanoGetPublicKey({ path: 'm/44' });
     (singlePK.success: boolean);
     if (singlePK.success) {
         const { payload } = singlePK;
@@ -214,7 +214,7 @@ export const cardanoGetPublicKey = async () => {
     }
 
     // bundle
-    const bundlePK = await TrezorConnect.cardanoGetPublicKey({ bundle: [{ path: 'm/44' }] });
+    const bundlePK = await JuBiterConnect.cardanoGetPublicKey({ bundle: [{ path: 'm/44' }] });
     (bundlePK.success: boolean);
     if (bundlePK.success) {
         bundlePK.payload.forEach(item => {
@@ -229,7 +229,7 @@ export const cardanoGetPublicKey = async () => {
 
     // errors
     // $FlowExpectedError: payload is PublicKey
-    const e1 = await TrezorConnect.cardanoGetPublicKey({ path: 'm/44' });
+    const e1 = await JuBiterConnect.cardanoGetPublicKey({ path: 'm/44' });
     if (e1.success) {
         e1.payload.forEach(item => {
             (item.path: string);
@@ -237,12 +237,12 @@ export const cardanoGetPublicKey = async () => {
     }
 
     // $FlowExpectedError: payload is PublicKey[]
-    const e2 = await TrezorConnect.cardanoGetPublicKey({ bundle: [{ path: 'm/44' }] });
+    const e2 = await JuBiterConnect.cardanoGetPublicKey({ bundle: [{ path: 'm/44' }] });
     if (e2.success) e2.payload.path;
 };
 
 export const cardanoSignTransaction = async () => {
-    const sign = await TrezorConnect.cardanoSignTransaction({
+    const sign = await JuBiterConnect.cardanoSignTransaction({
         inputs: [
             {
                 prev_hash: '1af..',

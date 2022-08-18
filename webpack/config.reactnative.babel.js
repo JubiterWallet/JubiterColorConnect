@@ -10,7 +10,7 @@ module.exports = {
         children: true,
     },
     entry: {
-        'trezor-connect': `${JS_SRC}index.js`,
+        'jubiter-connect': `${JS_SRC}index.js`,
     },
     output: {
         filename: 'js/[name].js',

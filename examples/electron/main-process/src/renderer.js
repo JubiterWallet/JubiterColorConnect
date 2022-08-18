@@ -12,8 +12,8 @@ const printLog = data => {
 // click to get public key
 const btn = document.getElementById('get-xpub');
 btn.onclick = () => {
-    // send request to trezor-connect
-    window.ipcRenderer.send('trezor-connect', {
+    // send request to jubiter-connect
+    window.ipcRenderer.send('jubiter-connect', {
         method: 'getPublicKey',
         params: {
             path: "m/49'/0'/0'",
@@ -22,10 +22,10 @@ btn.onclick = () => {
     });
 };
 
-// receive data from TrezorConnect
-window.ipcRenderer.on('trezor-connect', (event, message) => {
+// receive data from JuBiterConnect
+window.ipcRenderer.on('jubiter-connect', (event, message) => {
     printLog(message);
 });
 
-// init TrezorConnect in electron main process
-window.ipcRenderer.send('trezor-connect', 'init');
+// initJuBiterConnect in electron main process
+window.ipcRenderer.send('jubiter-connect', 'init');

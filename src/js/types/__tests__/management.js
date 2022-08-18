@@ -1,8 +1,8 @@
 /* @flow */
-import TrezorConnect from '../../index';
+import JuBiterConnect from '../../index';
 
 export const management = () => {
-    TrezorConnect.resetDevice({
+    JuBiterConnect.resetDevice({
         strength: 1,
         label: 'My Trezor',
         u2f_counter: 0,
@@ -13,41 +13,41 @@ export const management = () => {
         backup_type: 0,
     });
 
-    TrezorConnect.wipeDevice({});
+    JuBiterConnect.wipeDevice({});
 
-    TrezorConnect.applyFlags({
+    JuBiterConnect.applyFlags({
         flags: 1,
     });
 
-    TrezorConnect.applySettings({
+    JuBiterConnect.applySettings({
         homescreen: 'string',
         display_rotation: 180,
         use_passphrase: true,
         label: 'My Trezor',
     });
 
-    TrezorConnect.backupDevice({});
+    JuBiterConnect.backupDevice({});
 
-    TrezorConnect.changePin({
+    JuBiterConnect.changePin({
         remove: true,
     });
 
-    TrezorConnect.firmwareUpdate({
+    JuBiterConnect.firmwareUpdate({
         binary: new ArrayBuffer(0),
     });
 
-    TrezorConnect.firmwareUpdate({
+    JuBiterConnect.firmwareUpdate({
         version: [2, 2, 0],
         btcOnly: false,
     });
 
     // $FlowExpectedError: cannot use both
-    TrezorConnect.firmwareUpdate({
+    JuBiterConnect.firmwareUpdate({
         binary: new ArrayBuffer(0),
         version: [2, 2, 0],
     });
 
-    TrezorConnect.recoveryDevice({
+    JuBiterConnect.recoveryDevice({
         passphrase_protection: true,
         pin_protection: true,
         label: 'My Trezor',

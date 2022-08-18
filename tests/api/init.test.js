@@ -1,34 +1,34 @@
 // @flow
 
-import TrezorConnect from '../../src/js/index';
+import JuBiterConnect from '../../src/js/index';
 
 // error thrown by .init()
 const INIT_ERROR = { code: 'Init_ManifestMissing' };
 
-describe('TrezorConnect.init', () => {
+describe('JuBiterConnect.init', () => {
     afterEach(() => {
-        TrezorConnect.dispose();
+        JuBiterConnect.dispose();
     });
 
     it('calling method before .init() and/or .manifest()', async () => {
-        const { payload } = await TrezorConnect.getCoinInfo({ coin: 'btc' });
+        const { payload } = await JuBiterConnect.getCoinInfo({ coin: 'btc' });
         expect(payload).toMatchObject(INIT_ERROR);
     });
 
-    it('missing manifest in TrezorConnect.init', async () => {
+    it('missing manifest in JuBiterConnect.init', async () => {
         try {
             // $FlowExpectedError
-            await TrezorConnect.init();
+            await JuBiterConnect.init();
             throw new Error('Should not be resolved');
         } catch (error) {
             expect(error).toMatchObject(INIT_ERROR);
         }
     });
 
-    it('invalid manifest in TrezorConnect.init', async () => {
+    it('invalid manifest in JuBiterConnect.init', async () => {
         try {
             // $FlowExpectedError
-            await TrezorConnect.init({ manifest: {} });
+            await JuBiterConnect.init({ manifest: {} });
             throw new Error('Should not be resolved');
         } catch (error) {
             expect(error).toMatchObject(INIT_ERROR);
@@ -36,12 +36,12 @@ describe('TrezorConnect.init', () => {
     });
 
     it('calling .init() multiple times', async () => {
-        await TrezorConnect.init({
+        await JuBiterConnect.init({
             manifest: { appUrl: 'a', email: 'b' },
         });
 
         try {
-            await TrezorConnect.init({ manifest: { appUrl: 'a', email: 'b' } });
+            await JuBiterConnect.init({ manifest: { appUrl: 'a', email: 'b' } });
             throw new Error('Should not be resolved');
         } catch (error) {
             expect(error).toMatchObject({ code: 'Init_AlreadyInitialized' });
@@ -49,20 +49,20 @@ describe('TrezorConnect.init', () => {
     });
 
     it('init success', async () => {
-        await TrezorConnect.init({ manifest: { appUrl: 'a', email: 'b' } });
+        await JuBiterConnect.init({ manifest: { appUrl: 'a', email: 'b' } });
 
-        const resp = await TrezorConnect.getCoinInfo({ coin: 'btc' });
+        const resp = await JuBiterConnect.getCoinInfo({ coin: 'btc' });
         expect(resp).toMatchObject({
             payload: { type: 'bitcoin', shortcut: 'BTC' },
         });
     });
 
     it('manifest success', async () => {
-        TrezorConnect.manifest({
+        JuBiterConnect.manifest({
             appUrl: 'a',
             email: 'b',
         });
-        const resp = await TrezorConnect.getCoinInfo({ coin: 'btc' });
+        const resp = await JuBiterConnect.getCoinInfo({ coin: 'btc' });
         expect(resp).toMatchObject({
             payload: { type: 'bitcoin', shortcut: 'BTC' },
         });

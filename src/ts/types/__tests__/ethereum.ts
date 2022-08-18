@@ -1,8 +1,8 @@
-import TrezorConnect from '../index';
+import JuBiterConnect from '../index';
 
 export const ethereumGetAddress = async () => {
     // regular
-    const singleAddress = await TrezorConnect.ethereumGetAddress({ path: 'm/44' });
+    const singleAddress = await JuBiterConnect.ethereumGetAddress({ path: 'm/44' });
 
     if (singleAddress.success) {
         const { payload } = singleAddress;
@@ -16,7 +16,7 @@ export const ethereumGetAddress = async () => {
     }
 
     // bundle
-    const bundleAddress = await TrezorConnect.ethereumGetAddress({ bundle: [{ path: 'm/44' }] });
+    const bundleAddress = await JuBiterConnect.ethereumGetAddress({ bundle: [{ path: 'm/44' }] });
 
     if (bundleAddress.success) {
         bundleAddress.payload.forEach(item => {
@@ -31,7 +31,7 @@ export const ethereumGetAddress = async () => {
     }
 
     // with all possible params
-    TrezorConnect.ethereumGetAddress({
+    JuBiterConnect.ethereumGetAddress({
         device: {
             path: '1',
             instance: 1,
@@ -48,18 +48,18 @@ export const ethereumGetAddress = async () => {
 
     // with invalid params
     // @ts-ignore
-    TrezorConnect.ethereumGetAddress();
+    JuBiterConnect.ethereumGetAddress();
     // @ts-ignore
-    TrezorConnect.ethereumGetAddress({ coin: 'btc' });
+    JuBiterConnect.ethereumGetAddress({ coin: 'btc' });
     // @ts-ignore
-    TrezorConnect.ethereumGetAddress({ path: 1 });
+    JuBiterConnect.ethereumGetAddress({ path: 1 });
     // @ts-ignore
-    TrezorConnect.ethereumGetAddress({ bundle: 1 });
+    JuBiterConnect.ethereumGetAddress({ bundle: 1 });
 };
 
 export const ethereumGetPublicKey = async () => {
     // regular
-    const singlePK = await TrezorConnect.ethereumGetPublicKey({ path: 'm/44' });
+    const singlePK = await JuBiterConnect.ethereumGetPublicKey({ path: 'm/44' });
 
     if (singlePK.success) {
         const { payload } = singlePK;
@@ -79,7 +79,7 @@ export const ethereumGetPublicKey = async () => {
     }
 
     // bundle
-    const bundlePK = await TrezorConnect.ethereumGetPublicKey({ bundle: [{ path: 'm/44' }] });
+    const bundlePK = await JuBiterConnect.ethereumGetPublicKey({ bundle: [{ path: 'm/44' }] });
 
     if (bundlePK.success) {
         bundlePK.payload.forEach(item => {
@@ -101,7 +101,7 @@ export const ethereumGetPublicKey = async () => {
 };
 
 export const ethereumSignTransaction = async () => {
-    const sign = await TrezorConnect.ethereumSignTransaction({
+    const sign = await JuBiterConnect.ethereumSignTransaction({
         path: 'm/44',
         transaction: {
             nonce: '0x0',
@@ -122,7 +122,7 @@ export const ethereumSignTransaction = async () => {
     }
 
     // eip1559 transaction
-    TrezorConnect.ethereumSignTransaction({
+    JuBiterConnect.ethereumSignTransaction({
         path: 'm/44',
         transaction: {
             nonce: '0x0',
@@ -138,7 +138,7 @@ export const ethereumSignTransaction = async () => {
     });
 
     // @ts-expect-error: combined gasPrice + maxFeePerGas
-    TrezorConnect.ethereumSignTransaction({
+    JuBiterConnect.ethereumSignTransaction({
         path: 'm/44',
         transaction: {
             nonce: '0x0',
@@ -156,7 +156,7 @@ export const ethereumSignTransaction = async () => {
 };
 
 export const signMessage = async () => {
-    const sign = await TrezorConnect.ethereumSignMessage({
+    const sign = await JuBiterConnect.ethereumSignMessage({
         path: 'm/44',
         message: 'foo',
         hex: false,
@@ -166,7 +166,7 @@ export const signMessage = async () => {
         payload.address;
         payload.signature;
     }
-    const verify = await TrezorConnect.ethereumVerifyMessage({
+    const verify = await JuBiterConnect.ethereumVerifyMessage({
         address: 'a',
         signature: 'a',
         message: 'foo',
@@ -179,7 +179,7 @@ export const signMessage = async () => {
 };
 
 export const signTypedData = async () => {
-    const sign = await TrezorConnect.ethereumSignTypedData({
+    const sign = await JuBiterConnect.ethereumSignTypedData({
         path: 'm/44',
         data: {
             types: {
@@ -233,7 +233,7 @@ export const signTypedData = async () => {
         payload.signature;
     }
 
-    await TrezorConnect.ethereumSignTypedData({
+    await JuBiterConnect.ethereumSignTypedData({
         path: 'm/44',
         metamask_v4_compat: true,
         data: {
@@ -246,7 +246,7 @@ export const signTypedData = async () => {
         domain_separator_hash: '0x',
     });
 
-    await TrezorConnect.ethereumSignTypedData({
+    await JuBiterConnect.ethereumSignTypedData({
         path: 'm/44',
         metamask_v4_compat: true,
         data: {

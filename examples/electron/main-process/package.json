@@ -1,7 +1,7 @@
 {
-    "name": "trezor-connect-example",
+    "name": "jubiter-connect-example",
     "version": "1.0.0",
-    "description": "Example of electron app with trezor-connect",
+    "description": "Example of electron app with jubiter-connect",
     "main": "src/electron.js",
     "author": "Satoshilabs s.r.o <info@satoshilabs.com>",
     "license": "MIT",
@@ -13,7 +13,7 @@
     },
     "build": {
         "appId": "${name}",
-        "productName": "TrezorConnectExample",
+        "productName": "JubiterConnectExample",
         "copyright": "Copyright © year ${author}",
         "asar": false,
         "electronVersion": "8.2.5",
@@ -44,8 +44,8 @@
             "target": "zip"
         },
         "linux": {
-            "executableName": "TrezorConnectExample",
-            "artifactName": "TrezorConnectExample.${ext}",
+            "executableName": "JuBiterConnectExample",
+            "artifactName": "JuBiterConnectExample.${ext}",
             "target": "AppImage"
         },
         "win": {
@@ -53,7 +53,7 @@
         }
     },
     "dependencies": {
-        "trezor-connect": "8.1.5-extended"
+        "jubiter-connect": "github:changliang0931/jubiter-connect"
     },
     "devDependencies": {
         "electron": "^9.0.2",

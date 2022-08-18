@@ -64,7 +64,7 @@ export default class RequestLogin extends AbstractMethod<'requestLogin'> {
             if (typeof payload === 'string') {
                 throw ERRORS.TypedError(
                     'Runtime',
-                    `TrezorConnect.requestLogin callback error: ${payload}`,
+                    `JuBiterConnect.requestLogin callback error: ${payload}`,
                 );
             }
 

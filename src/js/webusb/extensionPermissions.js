@@ -11,7 +11,7 @@ let config: Config;
 
 const onLoad = async () => {
     config = await httpRequest('./data/config.json', 'json');
-    sendMessage('usb-permissions-init', '*');
+    sendMessage('jubiter-usb-permissions-init', '*');
 };
 
 const init = (label: string) => {
@@ -31,7 +31,7 @@ const init = (label: string) => {
         if (usb) {
             try {
                 await usb.requestDevice({ filters });
-                sendMessage('usb-permissions-close', '*');
+                sendMessage('jubiter-usb-permissions-close', '*');
             } catch (error) {
                 // empty
             }
@@ -39,12 +39,12 @@ const init = (label: string) => {
     };
 
     cancelButton.onclick = () => {
-        sendMessage('usb-permissions-close', '*');
+        sendMessage('jubiter-usb-permissions-close', '*');
     };
 };
 
 const handleMessage = ({ data, origin }: any) => {
-    if (data && data.type === 'usb-permissions-init') {
+    if (data && data.type === 'jubiter-usb-permissions-init') {
         window.removeEventListener('message', handleMessage, false);
         const knownHost = config.knownHosts.find(host => host.origin === data.extension);
         const label = knownHost && knownHost.label ? knownHost.label : origin;

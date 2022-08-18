@@ -190,7 +190,7 @@ export default class PopupManager extends EventEmitter {
     }
 
     handleExtensionConnect(port: ChromePort) {
-        if (port.name !== 'trezor-connect') return;
+        if (port.name !== 'jubiter-connect') return;
         if (!this._window || (this._window && this._window.id !== port.sender.tab.id)) {
             port.disconnect();
             return;
@@ -240,7 +240,7 @@ export default class PopupManager extends EventEmitter {
                     // $FlowIssue chrome not declared outside
                     chrome.tabs.create(
                         {
-                            url: 'trezor-usb-permissions.html',
+                            url: 'jubiter-usb-permissions.html',
                             index: tabs[0].index + 1,
                         },
                         _tab => {

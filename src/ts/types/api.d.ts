@@ -20,20 +20,20 @@ import * as Misc from './misc';
 import * as Events from './events';
 import * as Blockchain from './backend/blockchain';
 
-export namespace TrezorConnect {
+export namespace JuBiterConnect {
     /**
-     * Set TrezorConnect manifest.
+     * Set JuBiterConnect manifest.
      */
     function manifest(params: P.Manifest): void;
 
     /**
-     * Initializes TrezorConnect.
+     * Initializes JuBiterConnect.
      * `manifest` is required
      */
     function init(settings: { manifest: P.Manifest } & Partial<P.ConnectSettings>): Promise<void>;
 
     /**
-     * Retrieves the settings that TrezorConnect was initialized with.
+     * Retrieves the settings that JuBiterConnect was initialized with.
      */
     function getSettings(): P.Response<P.ConnectSettings>;
 

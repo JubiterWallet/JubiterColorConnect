@@ -1,8 +1,8 @@
-import TrezorConnect from '../index';
+import JuBiterConnect from '../index';
 
 export const stellarGetAddress = async () => {
     // regular
-    const singleAddress = await TrezorConnect.stellarGetAddress({ path: 'm/44' });
+    const singleAddress = await JuBiterConnect.stellarGetAddress({ path: 'm/44' });
 
     if (singleAddress.success) {
         const { payload } = singleAddress;
@@ -16,7 +16,7 @@ export const stellarGetAddress = async () => {
     }
 
     // bundle
-    const bundleAddress = await TrezorConnect.stellarGetAddress({ bundle: [{ path: 'm/44' }] });
+    const bundleAddress = await JuBiterConnect.stellarGetAddress({ bundle: [{ path: 'm/44' }] });
 
     if (bundleAddress.success) {
         bundleAddress.payload.forEach(item => {
@@ -31,7 +31,7 @@ export const stellarGetAddress = async () => {
     }
 
     // with all possible params
-    TrezorConnect.stellarGetAddress({
+    JuBiterConnect.stellarGetAddress({
         device: {
             path: '1',
             instance: 1,
@@ -48,17 +48,17 @@ export const stellarGetAddress = async () => {
 
     // with invalid params
     // @ts-ignore
-    TrezorConnect.stellarGetAddress();
+    JuBiterConnect.stellarGetAddress();
     // @ts-ignore
-    TrezorConnect.stellarGetAddress({ coin: 'btc' });
+    JuBiterConnect.stellarGetAddress({ coin: 'btc' });
     // @ts-ignore
-    TrezorConnect.stellarGetAddress({ path: 1 });
+    JuBiterConnect.stellarGetAddress({ path: 1 });
     // @ts-ignore
-    TrezorConnect.stellarGetAddress({ bundle: 1 });
+    JuBiterConnect.stellarGetAddress({ bundle: 1 });
 };
 
 export const stellarSignTransaction = async () => {
-    const sign = await TrezorConnect.stellarSignTransaction({
+    const sign = await JuBiterConnect.stellarSignTransaction({
         path: 'm/44',
         networkPassphrase: 'Test SDF Network ; September 2015',
         transaction: {

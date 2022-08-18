@@ -1,6 +1,6 @@
 /* eslint-disable import/extensions */
 
-import TrezorConnect from '../../npm-extended';
+import JuBiterConnect from '../../npm-extended';
 
 import { Controller } from '../../tests/websocket-client';
 
@@ -25,14 +25,14 @@ const runSetup = async () => {
  * Example starts here
  */
 const runExample = async () => {
-    await TrezorConnect.init({
+    await JuBiterConnect.init({
         manifest: {
             appUrl: 'my app',
             email: 'app@myapp.meow',
         },
     });
 
-    const features = await TrezorConnect.getFeatures();
+    const features = await JuBiterConnect.getFeatures();
 
     console.log(features);
 

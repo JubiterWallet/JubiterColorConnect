@@ -1,4 +1,4 @@
-# the last successful build of nixpkgs-unstable as of 2021-11-16 compatible to trezor-suite
+# the last successful build of nixpkgs-unstable as of 2021-11-16 compatible to jubiter-suite
 with import
   (builtins.fetchTarball {
     url = "https://github.com/NixOS/nixpkgs/archive/5cb226a06c49f7a2d02863d0b5786a310599df6b.tar.gz";
@@ -7,7 +7,7 @@ with import
 { };
 
 stdenv.mkDerivation {
-  name = "trezor-connect-dev";
+  name = "jubiter-connect-dev";
   buildInputs = [
     autoPatchelfHook
     xorg.xhost

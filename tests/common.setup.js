@@ -1,5 +1,5 @@
 import { Controller } from './websocket-client';
-import TrezorConnect from '../src/js/index';
+import JuBiterConnect from '../src/js/index';
 import * as UI from '../src/js/constants/ui';
 import { versionCompare } from '../src/js/utils/versionUtils';
 
@@ -88,7 +88,7 @@ const setup = async (controller, options) => {
 
         // after all is done, start bridge again
         await controller.send({ type: 'bridge-start' });
-        // Wait to prevent Transport is missing error from TrezorConnect
+        // Wait to prevent Transport is missing error from JuBiterConnect
         await wait(2000);
     } catch (err) {
         // this means that something in trezor-user-env got wrong.
@@ -97,10 +97,10 @@ const setup = async (controller, options) => {
     }
 };
 
-const initTrezorConnect = async (controller, options) => {
-    TrezorConnect.removeAllListeners();
+const initJuBiterConnect = async (controller, options) => {
+    JuBiterConnect.removeAllListeners();
 
-    TrezorConnect.on('device-connect', device => {
+    JuBiterConnect.on('device-connect', device => {
         const { major_version, minor_version, patch_version, revision } = device.features;
         console.log('Device connected: ', {
             major_version,
@@ -111,18 +111,18 @@ const initTrezorConnect = async (controller, options) => {
         });
     });
 
-    TrezorConnect.on(UI.REQUEST_CONFIRMATION, () => {
-        TrezorConnect.uiResponse({
+    JuBiterConnect.on(UI.REQUEST_CONFIRMATION, () => {
+        JuBiterConnect.uiResponse({
             type: UI.RECEIVE_CONFIRMATION,
             payload: true,
         });
     });
 
-    TrezorConnect.on(UI.REQUEST_BUTTON, () => {
+    JuBiterConnect.on(UI.REQUEST_BUTTON, () => {
         setTimeout(() => controller.send({ type: 'emulator-press-yes' }), 1);
     });
 
-    await TrezorConnect.init({
+    await JuBiterConnect.init({
         manifest: {
             appUrl: 'tests.connect.trezor.io',
             email: 'tests@connect.trezor.io',
@@ -198,7 +198,7 @@ global.Trezor = {
     setup,
     skipTest,
     conditionalTest,
-    initTrezorConnect,
+    initJuBiterConnect,
 };
 
 // picked from utils/pathUtils

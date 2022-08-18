@@ -105,7 +105,7 @@ export default class Blockchain {
         });
     }
 
-    onError(error: ERRORS.TrezorError) {
+    onError(error: ERRORS.JuBiterError) {
         this.link.dispose();
         this.postMessage(
             BlockchainMessage(BLOCKCHAIN.ERROR, {

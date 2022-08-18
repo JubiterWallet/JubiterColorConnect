@@ -4,7 +4,7 @@ const { CACHE } = require('./__txcache__');
 const { createServer, transformCoinsJson } = require('./__wscache__');
 
 const CustomReporter = (rootConfig, logger) => {
-    const log = logger.create('reporter.TrezorConnect');
+    const log = logger.create('reporter.JuBiterConnect');
 
     return {
         onRunStart: () => {

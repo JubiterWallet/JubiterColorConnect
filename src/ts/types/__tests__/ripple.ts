@@ -1,8 +1,8 @@
-import TrezorConnect from '../index';
+import JuBiterConnect from '../index';
 
 export const rippleGetAddress = async () => {
     // regular
-    const singleAddress = await TrezorConnect.rippleGetAddress({ path: 'm/44' });
+    const singleAddress = await JuBiterConnect.rippleGetAddress({ path: 'm/44' });
 
     if (singleAddress.success) {
         const { payload } = singleAddress;
@@ -16,7 +16,7 @@ export const rippleGetAddress = async () => {
     }
 
     // bundle
-    const bundleAddress = await TrezorConnect.rippleGetAddress({ bundle: [{ path: 'm/44' }] });
+    const bundleAddress = await JuBiterConnect.rippleGetAddress({ bundle: [{ path: 'm/44' }] });
 
     if (bundleAddress.success) {
         bundleAddress.payload.forEach(item => {
@@ -31,7 +31,7 @@ export const rippleGetAddress = async () => {
     }
 
     // with all possible params
-    TrezorConnect.rippleGetAddress({
+    JuBiterConnect.rippleGetAddress({
         device: {
             path: '1',
             instance: 1,
@@ -48,17 +48,17 @@ export const rippleGetAddress = async () => {
 
     // with invalid params
     // @ts-ignore
-    TrezorConnect.rippleGetAddress();
+    JuBiterConnect.rippleGetAddress();
     // @ts-ignore
-    TrezorConnect.rippleGetAddress({ coin: 'btc' });
+    JuBiterConnect.rippleGetAddress({ coin: 'btc' });
     // @ts-ignore
-    TrezorConnect.rippleGetAddress({ path: 1 });
+    JuBiterConnect.rippleGetAddress({ path: 1 });
     // @ts-ignore
-    TrezorConnect.rippleGetAddress({ bundle: 1 });
+    JuBiterConnect.rippleGetAddress({ bundle: 1 });
 };
 
 export const rippleSignTransaction = async () => {
-    const sign = await TrezorConnect.rippleSignTransaction({
+    const sign = await JuBiterConnect.rippleSignTransaction({
         path: 'm/44',
         transaction: {
             payment: {

@@ -396,7 +396,7 @@ export default class DeviceCommands {
                 message = 'Action cancelled by user';
             }
             // pass code and message from firmware error
-            return Promise.reject(new ERRORS.TrezorError(code, message));
+            return Promise.reject(new ERRORS.JuBiterError(code, message));
         }
 
         if (res.type === 'Features') {

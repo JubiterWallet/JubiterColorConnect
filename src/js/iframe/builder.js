@@ -11,7 +11,7 @@ export let instance: HTMLIFrameElement | null;
 export let origin: string;
 export let initPromise: Deferred<void> = createDeferred();
 export let timeout: number = 0;
-export let error: ?ERRORS.TrezorError;
+export let error: ?ERRORS.JuBiterError;
 /* eslint-enable import/no-mutable-exports */
 
 let _messageID: number = 0;
@@ -20,7 +20,7 @@ export const messagePromises: { [key: number]: Deferred<any> } = {};
 
 export const init = async (settings: ConnectSettings) => {
     initPromise = createDeferred();
-    const existedFrame: HTMLIFrameElement = (document.getElementById('trezorconnect'): any);
+    const existedFrame: HTMLIFrameElement = (document.getElementById('jubiterconnect'): any);
     if (existedFrame) {
         instance = existedFrame;
     } else {
@@ -33,7 +33,7 @@ export const init = async (settings: ConnectSettings) => {
         instance.style.border = '0px';
         instance.style.width = '0px';
         instance.style.height = '0px';
-        instance.id = 'trezorconnect';
+        instance.id = 'jubiterconnect';
     }
 
     let src: string;

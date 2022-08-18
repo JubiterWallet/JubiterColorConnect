@@ -1,7 +1,7 @@
 const { app, ipcMain, BrowserWindow } = require('electron');
 const path = require('path');
 const url = require('url');
-const { initTrezorConnect, callTrezorConnect } = require('./trezor-connect-ipc');
+const { initJuBiterConnect, callJuBiterConnect } = require('./jubiter-connect-ipc');
 
 let mainWindow;
 
@@ -56,10 +56,10 @@ app.on('browser-window-focus', (event, win) => {
 });
 
 // handle messages from renderer
-ipcMain.on('trezor-connect', (event, message) => {
+ipcMain.on('jubiter-connect', (event, message) => {
     if (message === 'init') {
-        initTrezorConnect(event.sender);
+        initJuBiterConnect(event.sender);
     } else {
-        callTrezorConnect(event.sender, message);
+        callJuBiterConnect(event.sender, message);
     }
 });

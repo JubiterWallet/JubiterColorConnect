@@ -1,7 +1,7 @@
-import TrezorConnect from '../index';
+import JuBiterConnect from '../index';
 
 export const cipherKeyValue = async () => {
-    const kv = await TrezorConnect.cipherKeyValue({
+    const kv = await JuBiterConnect.cipherKeyValue({
         path: 'm/44',
         key: 'key',
         value: 'hash',
@@ -14,7 +14,7 @@ export const cipherKeyValue = async () => {
     }
 
     // bundle
-    const bundleKV = await TrezorConnect.cipherKeyValue({
+    const bundleKV = await JuBiterConnect.cipherKeyValue({
         bundle: [{ path: 'm/44', key: 'key', value: 'hash' }],
     });
 
@@ -30,7 +30,7 @@ export const cipherKeyValue = async () => {
 };
 
 export const customMessage = () => {
-    TrezorConnect.customMessage({
+    JuBiterConnect.customMessage({
         messages: {},
         message: 'MyCustomSignTx',
         params: {
@@ -53,7 +53,7 @@ export const customMessage = () => {
 // Method with mixed params
 export const requestLogin = async () => {
     // async call
-    const a = await TrezorConnect.requestLogin({
+    const a = await JuBiterConnect.requestLogin({
         callback: () => ({
             challengeHidden: 'a',
             challengeVisual: 'b',
@@ -77,17 +77,17 @@ export const requestLogin = async () => {
         a.payload.address;
     }
     // sync call
-    TrezorConnect.requestLogin({
+    JuBiterConnect.requestLogin({
         challengeHidden: 'a',
         challengeVisual: 'b',
     });
 
     // @ts-ignore
-    TrezorConnect.requestLogin();
+    JuBiterConnect.requestLogin();
     // @ts-ignore
-    TrezorConnect.requestLogin({ callback: 'string' });
+    JuBiterConnect.requestLogin({ callback: 'string' });
     // @ts-ignore
-    TrezorConnect.requestLogin({ challengeHidden: 'a' });
+    JuBiterConnect.requestLogin({ challengeHidden: 'a' });
     // @ts-ignore
-    TrezorConnect.requestLogin({ challengeVisual: 1 });
+    JuBiterConnect.requestLogin({ challengeVisual: 1 });
 };

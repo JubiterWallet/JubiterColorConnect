@@ -6,11 +6,11 @@ import {
     CardanoPoolRelayType,
     CardanoTxSigningMode,
 } from 'types/trezor/protobuf';
-import TrezorConnect from '../index';
+import JuBiterConnect from '../index';
 
 export const cardanoGetAddress = async () => {
     // regular
-    const singleAddress = await TrezorConnect.cardanoGetAddress({
+    const singleAddress = await JuBiterConnect.cardanoGetAddress({
         addressParameters: {
             addressType: CardanoAddressType.BASE,
             path: 'm/44',
@@ -54,7 +54,7 @@ export const cardanoGetAddress = async () => {
     }
 
     // bundle
-    const bundleAddress = await TrezorConnect.cardanoGetAddress({
+    const bundleAddress = await JuBiterConnect.cardanoGetAddress({
         bundle: [
             {
                 addressParameters: {
@@ -103,7 +103,7 @@ export const cardanoGetAddress = async () => {
     }
 
     // with all possible params
-    TrezorConnect.cardanoGetAddress({
+    JuBiterConnect.cardanoGetAddress({
         device: {
             path: '1',
             instance: 1,
@@ -134,17 +134,17 @@ export const cardanoGetAddress = async () => {
 
     // with invalid params
     // @ts-ignore
-    TrezorConnect.cardanoGetAddress();
+    JuBiterConnect.cardanoGetAddress();
     // @ts-ignore
-    TrezorConnect.cardanoGetAddress({ coin: 'btc' });
+    JuBiterConnect.cardanoGetAddress({ coin: 'btc' });
     // @ts-ignore
-    TrezorConnect.cardanoGetAddress({ addressParameters: { path: 1 } });
+    JuBiterConnect.cardanoGetAddress({ addressParameters: { path: 1 } });
     // @ts-ignore
-    TrezorConnect.cardanoGetAddress({ bundle: 1 });
+    JuBiterConnect.cardanoGetAddress({ bundle: 1 });
 };
 
 export const cardanoGetNativeScriptHash = async () => {
-    const result = await TrezorConnect.cardanoGetNativeScriptHash({
+    const result = await JuBiterConnect.cardanoGetNativeScriptHash({
         script: {
             type: CardanoNativeScriptType.PUB_KEY,
             scripts: [
@@ -176,7 +176,7 @@ export const cardanoGetNativeScriptHash = async () => {
 
 export const cardanoGetPublicKey = async () => {
     // regular
-    const singlePK = await TrezorConnect.cardanoGetPublicKey({ path: 'm/44' });
+    const singlePK = await JuBiterConnect.cardanoGetPublicKey({ path: 'm/44' });
     if (singlePK.success) {
         const { payload } = singlePK;
         payload.path;
@@ -190,7 +190,7 @@ export const cardanoGetPublicKey = async () => {
     }
 
     // bundle
-    const bundlePK = await TrezorConnect.cardanoGetPublicKey({ bundle: [{ path: 'm/44' }] });
+    const bundlePK = await JuBiterConnect.cardanoGetPublicKey({ bundle: [{ path: 'm/44' }] });
     if (bundlePK.success) {
         bundlePK.payload.forEach(item => {
             item.path;
@@ -206,7 +206,7 @@ export const cardanoGetPublicKey = async () => {
 };
 
 export const cardanoSignTransaction = async () => {
-    const sign = await TrezorConnect.cardanoSignTransaction({
+    const sign = await JuBiterConnect.cardanoSignTransaction({
         inputs: [
             {
                 prev_hash: '1af..',

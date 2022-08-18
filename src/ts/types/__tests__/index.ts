@@ -1,8 +1,8 @@
-// TrezorConnect API types tests
+// JuBiterConnect API types tests
 
 // Exported constants
 /* eslint-disable no-unused-vars */
-import TrezorConnect, {
+import JuBiterConnect, {
     UI_EVENT,
     DEVICE_EVENT,
     RESPONSE_EVENT,
@@ -28,19 +28,19 @@ import TrezorConnect, {
 
 export const init = async () => {
     const manifest = { appUrl: '', email: '' };
-    TrezorConnect.init({ manifest });
+    JuBiterConnect.init({ manifest });
     // @ts-ignore
-    TrezorConnect.init();
+    JuBiterConnect.init();
     // @ts-ignore
-    TrezorConnect.init({});
+    JuBiterConnect.init({});
     // @ts-ignore
-    TrezorConnect.manifest({});
+    JuBiterConnect.manifest({});
     // @ts-ignore
-    TrezorConnect.manifest({ appUrl: 1 });
+    JuBiterConnect.manifest({ appUrl: 1 });
     // @ts-ignore
-    TrezorConnect.manifest({ email: 1 });
+    JuBiterConnect.manifest({ email: 1 });
 
-    const settings = await TrezorConnect.getSettings();
+    const settings = await JuBiterConnect.getSettings();
     if (settings.success) {
         const { payload } = settings;
         payload.manifest;
@@ -53,15 +53,15 @@ export const init = async () => {
         payload.pendingTransportEvent;
     }
 
-    TrezorConnect.dispose();
-    TrezorConnect.cancel();
-    TrezorConnect.cancel('Interruption error');
-    TrezorConnect.renderWebUSBButton();
-    TrezorConnect.disableWebUSB();
+    JuBiterConnect.dispose();
+    JuBiterConnect.cancel();
+    JuBiterConnect.cancel('Interruption error');
+    JuBiterConnect.renderWebUSBButton();
+    JuBiterConnect.disableWebUSB();
 };
 
 export const events = () => {
-    TrezorConnect.on(DEVICE_EVENT, event => {
+    JuBiterConnect.on(DEVICE_EVENT, event => {
         const { payload } = event;
         event.type;
         payload.path;
@@ -96,13 +96,13 @@ export const events = () => {
             payload.error.toLowerCase();
         }
     });
-    TrezorConnect.off(DEVICE_EVENT, () => {});
-    TrezorConnect.removeAllListeners();
+    JuBiterConnect.off(DEVICE_EVENT, () => {});
+    JuBiterConnect.removeAllListeners();
 
     // @ts-ignore
-    TrezorConnect.on('DEVICE-EVENT', () => {});
+    JuBiterConnect.on('DEVICE-EVENT', () => {});
 
-    TrezorConnect.on(TRANSPORT_EVENT, event => {
+    JuBiterConnect.on(TRANSPORT_EVENT, event => {
         if (event.type === TRANSPORT.START) {
             event.payload.type;
             event.payload.version;
@@ -112,9 +112,9 @@ export const events = () => {
             event.payload.bridge;
         }
     });
-    TrezorConnect.off(TRANSPORT_EVENT, () => {});
+    JuBiterConnect.off(TRANSPORT_EVENT, () => {});
 
-    TrezorConnect.on(UI_EVENT, event => {
+    JuBiterConnect.on(UI_EVENT, event => {
         if (event.type === UI.BUNDLE_PROGRESS) {
             event.payload.progress;
             event.payload.error;
@@ -142,29 +142,29 @@ export const events = () => {
             event.payload.type === 'foo';
         }
     });
-    TrezorConnect.off(UI_EVENT, () => {});
+    JuBiterConnect.off(UI_EVENT, () => {});
 
-    TrezorConnect.on<AccountInfo>(UI.BUNDLE_PROGRESS, event => {
+    JuBiterConnect.on<AccountInfo>(UI.BUNDLE_PROGRESS, event => {
         event.progress;
         event.error;
         event.response.empty;
         event.response.availableBalance;
     });
 
-    TrezorConnect.on<EthereumAddress>(UI.BUNDLE_PROGRESS, event => {
+    JuBiterConnect.on<EthereumAddress>(UI.BUNDLE_PROGRESS, event => {
         event.progress;
         event.error;
         event.response.serializedPath;
         event.response.address;
     });
 
-    TrezorConnect.on(UI.REQUEST_BUTTON, event => {
+    JuBiterConnect.on(UI.REQUEST_BUTTON, event => {
         event.code;
         event.data;
         event.device;
     });
 
-    TrezorConnect.on(BLOCKCHAIN_EVENT, event => {
+    JuBiterConnect.on(BLOCKCHAIN_EVENT, event => {
         if (event.type === BLOCKCHAIN.CONNECT) {
             event.payload.blockHash;
             event.payload.shortcut;
@@ -179,5 +179,5 @@ export const events = () => {
             event.payload.notification.tx;
         }
     });
-    TrezorConnect.off(BLOCKCHAIN_EVENT, () => {});
+    JuBiterConnect.off(BLOCKCHAIN_EVENT, () => {});
 };

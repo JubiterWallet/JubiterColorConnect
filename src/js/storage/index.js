@@ -1,8 +1,8 @@
 /* @flow */
 
-export const BROWSER_KEY = 'trezorconnect_browser';
-export const PERMISSIONS_KEY = 'trezorconnect_permissions';
-export const CONFIRMATION_KEY = 'trezorconnect_confirmations';
+export const BROWSER_KEY = 'jubiterconnect_browser';
+export const PERMISSIONS_KEY = 'jubiterconnect_permissions';
+export const CONFIRMATION_KEY = 'jubiterconnect_confirmations';
 
 const _storage: { [k: string]: string } = {};
 

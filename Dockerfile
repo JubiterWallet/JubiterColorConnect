@@ -12,7 +12,7 @@ FROM base AS img-npm-extended
 ENV SCRIPT='yarn build:npm-extended'
 
 FROM img-${target} AS final
-COPY . /trezor-connect
-WORKDIR /trezor-connect
+COPY . /jubiter-connect
+WORKDIR /jubiter-connect
 RUN yarn
 RUN ${SCRIPT}

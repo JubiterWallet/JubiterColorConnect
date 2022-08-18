@@ -4,14 +4,15 @@ import type { Manifest, ConnectSettings } from '../types';
 
 /*
  * Initial settings for connect.
- * It could be changed by passing values into TrezorConnect.init(...) method
+ * It could be changed by passing values into JuBiterConnect.init(...) method
  */
 
 const VERSION = '8.2.10';
 const versionN = VERSION.split('.').map(s => parseInt(s, 10));
 // const DIRECTORY = `${ versionN[0] }${ (versionN[1] > 0 ? `.${versionN[1]}` : '') }/`;
 const DIRECTORY = `${versionN[0]}/`;
-const DEFAULT_DOMAIN = `https://connect.trezor.io/${DIRECTORY}`;
+// const DEFAULT_DOMAIN = `https://connect.trezor.io/${DIRECTORY}`;
+const DEFAULT_DOMAIN = `https://localhost:8088/`;
 export const DEFAULT_PRIORITY = 2;
 
 const initialSettings: ConnectSettings = {

@@ -1,18 +1,18 @@
 /**
 When the button's clicked:
-- call for TrezorConnect action
+- call for JuBiterConnect action
 - show a notification with response (if succeed)
 */
 
-const { TrezorConnect } = global;
+const JuBiterConnect  = window.JuBiterConnect;
 
-TrezorConnect.manifest({
+JuBiterConnect.manifest({
     email: 'email@developer.com',
     appUrl: 'webextension-app-boilerplate',
 });
 
 function onClick() {
-    TrezorConnect.getAddress({
+    JuBiterConnect.getAddress({
         path: "m/49'/0'/0'/0/0",
     })
         .then(response => {
@@ -22,12 +22,12 @@ function onClick() {
             chrome.notifications.create(new Date().getTime().toString(), {
                 type: 'basic',
                 iconUrl: 'icons/48.png',
-                title: 'TrezorConnect',
+                title: 'JuBiterConnect',
                 message,
             });
         })
         .catch(error => {
-            console.error('TrezorConnectError', error);
+            console.error('JuBiterConnectError', error);
         });
 }
 chrome.browserAction.onClicked.addListener(onClick);

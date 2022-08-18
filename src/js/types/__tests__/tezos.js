@@ -1,9 +1,9 @@
 /* @flow */
-import TrezorConnect from '../../index';
+import JuBiterConnect from '../../index';
 
 export const tezosGetAddress = async () => {
     // regular
-    const singleAddress = await TrezorConnect.tezosGetAddress({ path: 'm/44' });
+    const singleAddress = await JuBiterConnect.tezosGetAddress({ path: 'm/44' });
     (singleAddress.success: boolean);
     if (singleAddress.success) {
         const { payload } = singleAddress;
@@ -13,7 +13,7 @@ export const tezosGetAddress = async () => {
     }
 
     // bundle
-    const bundleAddress = await TrezorConnect.tezosGetAddress({ bundle: [{ path: 'm/44' }] });
+    const bundleAddress = await JuBiterConnect.tezosGetAddress({ bundle: [{ path: 'm/44' }] });
     (bundleAddress.success: boolean);
     if (bundleAddress.success) {
         bundleAddress.payload.forEach(item => {
@@ -26,7 +26,7 @@ export const tezosGetAddress = async () => {
     }
 
     // with all possible params
-    TrezorConnect.tezosGetAddress({
+    JuBiterConnect.tezosGetAddress({
         device: {
             path: '1',
             instance: 1,
@@ -42,7 +42,7 @@ export const tezosGetAddress = async () => {
     });
 
     // $FlowExpectedError: payload is Address
-    const e1 = await TrezorConnect.tezosGetAddress({ path: 'm/44' });
+    const e1 = await JuBiterConnect.tezosGetAddress({ path: 'm/44' });
     if (e1.success) {
         e1.payload.forEach(item => {
             (item.address: string);
@@ -50,23 +50,23 @@ export const tezosGetAddress = async () => {
     }
 
     // $FlowExpectedError: payload is Address[]
-    const e2 = await TrezorConnect.tezosGetAddress({ bundle: [{ path: 'm/44' }] });
+    const e2 = await JuBiterConnect.tezosGetAddress({ bundle: [{ path: 'm/44' }] });
     if (e2.success) e2.payload.address;
 
     // with invalid params
     // $FlowExpectedError
-    TrezorConnect.tezosGetAddress();
+    JuBiterConnect.tezosGetAddress();
     // $FlowExpectedError
-    TrezorConnect.tezosGetAddress({ coin: 'btc' });
+    JuBiterConnect.tezosGetAddress({ coin: 'btc' });
     // $FlowExpectedError
-    TrezorConnect.tezosGetAddress({ path: 1 });
+    JuBiterConnect.tezosGetAddress({ path: 1 });
     // $FlowExpectedError
-    TrezorConnect.tezosGetAddress({ bundle: 1 });
+    JuBiterConnect.tezosGetAddress({ bundle: 1 });
 };
 
 export const tezosGetPublicKey = async () => {
     // regular
-    const singlePK = await TrezorConnect.tezosGetPublicKey({ path: 'm/44' });
+    const singlePK = await JuBiterConnect.tezosGetPublicKey({ path: 'm/44' });
     (singlePK.success: boolean);
     if (singlePK.success) {
         const { payload } = singlePK;
@@ -76,7 +76,7 @@ export const tezosGetPublicKey = async () => {
     }
 
     // bundle
-    const bundlePK = await TrezorConnect.tezosGetPublicKey({ bundle: [{ path: 'm/44' }] });
+    const bundlePK = await JuBiterConnect.tezosGetPublicKey({ bundle: [{ path: 'm/44' }] });
     (bundlePK.success: boolean);
     if (bundlePK.success) {
         bundlePK.payload.forEach(item => {
@@ -90,7 +90,7 @@ export const tezosGetPublicKey = async () => {
 
     // errors
     // $FlowExpectedError: payload is PublicKey
-    const e1 = await TrezorConnect.tezosGetPublicKey({ path: 'm/44' });
+    const e1 = await JuBiterConnect.tezosGetPublicKey({ path: 'm/44' });
     if (e1.success) {
         e1.payload.forEach(item => {
             (item.path: string);
@@ -98,12 +98,12 @@ export const tezosGetPublicKey = async () => {
     }
 
     // $FlowExpectedError: payload is PublicKey[]
-    const e2 = await TrezorConnect.tezosGetPublicKey({ bundle: [{ path: 'm/44' }] });
+    const e2 = await JuBiterConnect.tezosGetPublicKey({ bundle: [{ path: 'm/44' }] });
     if (e2.success) e2.payload.path;
 };
 
 export const tezosSignTransaction = async () => {
-    const sign = await TrezorConnect.tezosSignTransaction({
+    const sign = await JuBiterConnect.tezosSignTransaction({
         path: "m/44'/1729'/10'",
         branch: 'BLGUkzwvguFu8ei8eLW3KgCbdtrMmv1UCqMvUpHHTGq1UPxypHS',
         operation: {

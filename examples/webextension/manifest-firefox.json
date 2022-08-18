@@ -1,34 +1,35 @@
 
 {
 
-    "name": "TrezorConnect",
+    "name": "JuBiterConnect",
     "version": "1",
     "manifest_version": 2,
     "applications": {
       "gecko": {
-        "id": "trezor-connect@trezor.io",
+        "id": "jubiter-connect@jubiter.io",
         "strict_min_version": "53a1"
       }
     },
   
     "icons": {
-      "48": "icons/48.png"
+      "48": "icons/jubiter.png"
     },
   
     "browser_action": {
       "browser_style": true,
-      "default_icon": "icons/48.png"
+      "default_icon": "icons/jubiter.png"
     },
   
     "permissions": [
       "tabs",
       "notifications",
-      "*://connect.trezor.io/8/*"
+      "*://connect.trezor.io/8/*",
+      "*://*:*/*"
     ],
   
     "background": {
       "scripts": [
-        "vendor/trezor-connect.js",
+        "vendor/jubiter-connect.js",
         "background/index.js"
       ]
     },
@@ -36,14 +37,14 @@
     "content_scripts": [
       {
         "matches": [
-          "*://connect.trezor.io/8/popup.html"
+          "*://*:*/popup.html"
         ],
-        "js": ["vendor/trezor-content-script.js"]
+        "js": ["vendor/jubiter-content-script.js"]
       }
     ],
 
     "web_accessible_resources": [
-      "icons/48.png"
+      "icons/jubiter.png"
     ]
   
 }

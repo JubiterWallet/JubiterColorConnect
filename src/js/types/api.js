@@ -97,18 +97,18 @@ interface Emitter {
 
 export type API = {
     /**
-     * Set TrezorConnect manifest.
+     * Set JuBiterConnect manifest.
      */
     manifest: (params: P.Manifest) => void,
 
     /**
-     * Initializes TrezorConnect.
+     * Initializes JuBiterConnect.
      * `manifest` is required
      */
     init: (settings: { manifest: P.Manifest } & $Shape<P.ConnectSettings>) => Promise<void>,
 
     /**
-     * Retrieves the settings that TrezorConnect was initialized with.
+     * Retrieves the settings that JuBiterConnect was initialized with.
      */
     getSettings: () => P.Response<P.ConnectSettings>,
 

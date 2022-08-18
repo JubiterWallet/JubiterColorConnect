@@ -8,7 +8,7 @@ module.exports = {
     target: 'web',
     mode: 'production',
     entry: {
-        'trezor-connect': `${JS_SRC}index.js`,
+        'jubiter-connect': `${JS_SRC}index.js`,
     },
     output: {
         path: DIST,

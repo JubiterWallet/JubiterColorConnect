@@ -9,4 +9,4 @@ submodules
 _old
 
 # examples large files
-examples/webextension/vendor/trezor-connect.js
+examples/webextension/vendor/jubiter-connect.js

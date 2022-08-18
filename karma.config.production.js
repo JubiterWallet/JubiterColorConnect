@@ -76,10 +76,10 @@ module.exports = config => {
                     Buffer: ['buffer', 'Buffer'],
                     process: 'process/browser',
                 }),
-                // replace TrezorConnect module used in ./tests/common.setup.js
+                // replace JubiterConnect module used in ./tests/common.setup.js
                 new webpack.NormalModuleReplacementPlugin(
                     /src\/js\/index$/,
-                    path.join(__dirname, 'build/trezor-connect'),
+                    path.join(__dirname, 'build/jubiter-connect'),
                 ),
                 // replace ws module used in ./tests/websocket-client.js
                 new webpack.NormalModuleReplacementPlugin(

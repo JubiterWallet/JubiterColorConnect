@@ -1,9 +1,9 @@
 /* @flow */
-import TrezorConnect from '../../index';
+import JuBiterConnect from '../../index';
 
 export const ethereumGetAddress = async () => {
     // regular
-    const singleAddress = await TrezorConnect.ethereumGetAddress({ path: 'm/44' });
+    const singleAddress = await JuBiterConnect.ethereumGetAddress({ path: 'm/44' });
     (singleAddress.success: boolean);
     if (singleAddress.success) {
         const { payload } = singleAddress;
@@ -13,7 +13,7 @@ export const ethereumGetAddress = async () => {
     }
 
     // bundle
-    const bundleAddress = await TrezorConnect.ethereumGetAddress({ bundle: [{ path: 'm/44' }] });
+    const bundleAddress = await JuBiterConnect.ethereumGetAddress({ bundle: [{ path: 'm/44' }] });
     (bundleAddress.success: boolean);
     if (bundleAddress.success) {
         bundleAddress.payload.forEach(item => {
@@ -26,7 +26,7 @@ export const ethereumGetAddress = async () => {
     }
 
     // with all possible params
-    TrezorConnect.ethereumGetAddress({
+    JuBiterConnect.ethereumGetAddress({
         device: {
             path: '1',
             instance: 1,
@@ -42,7 +42,7 @@ export const ethereumGetAddress = async () => {
     });
 
     // $FlowExpectedError: payload is Address
-    const e1 = await TrezorConnect.ethereumGetAddress({ path: 'm/44' });
+    const e1 = await JuBiterConnect.ethereumGetAddress({ path: 'm/44' });
     if (e1.success) {
         e1.payload.forEach(item => {
             (item.address: string);
@@ -50,23 +50,23 @@ export const ethereumGetAddress = async () => {
     }
 
     // $FlowExpectedError: payload is Address[]
-    const e2 = await TrezorConnect.ethereumGetAddress({ bundle: [{ path: 'm/44' }] });
+    const e2 = await JuBiterConnect.ethereumGetAddress({ bundle: [{ path: 'm/44' }] });
     if (e2.success) e2.payload.address;
 
     // with invalid params
     // $FlowExpectedError
-    TrezorConnect.ethereumGetAddress();
+    JuBiterConnect.ethereumGetAddress();
     // $FlowExpectedError
-    TrezorConnect.ethereumGetAddress({ coin: 'btc' });
+    JuBiterConnect.ethereumGetAddress({ coin: 'btc' });
     // $FlowExpectedError
-    TrezorConnect.ethereumGetAddress({ path: 1 });
+    JuBiterConnect.ethereumGetAddress({ path: 1 });
     // $FlowExpectedError
-    TrezorConnect.ethereumGetAddress({ bundle: 1 });
+    JuBiterConnect.ethereumGetAddress({ bundle: 1 });
 };
 
 export const ethereumGetPublicKey = async () => {
     // regular
-    const singlePK = await TrezorConnect.ethereumGetPublicKey({ path: 'm/44' });
+    const singlePK = await JuBiterConnect.ethereumGetPublicKey({ path: 'm/44' });
     (singlePK.success: boolean);
     if (singlePK.success) {
         const { payload } = singlePK;
@@ -82,7 +82,7 @@ export const ethereumGetPublicKey = async () => {
     }
 
     // bundle
-    const bundlePK = await TrezorConnect.ethereumGetPublicKey({ bundle: [{ path: 'm/44' }] });
+    const bundlePK = await JuBiterConnect.ethereumGetPublicKey({ bundle: [{ path: 'm/44' }] });
     (bundlePK.success: boolean);
     if (bundlePK.success) {
         bundlePK.payload.forEach(item => {
@@ -102,7 +102,7 @@ export const ethereumGetPublicKey = async () => {
 
     // errors
     // $FlowExpectedError: payload is PublicKey
-    const e1 = await TrezorConnect.ethereumGetPublicKey({ path: 'm/44' });
+    const e1 = await JuBiterConnect.ethereumGetPublicKey({ path: 'm/44' });
     if (e1.success) {
         e1.payload.forEach(item => {
             (item.path: string);
@@ -110,12 +110,12 @@ export const ethereumGetPublicKey = async () => {
     }
 
     // $FlowExpectedError: payload is PublicKey[]
-    const e2 = await TrezorConnect.ethereumGetPublicKey({ bundle: [{ path: 'm/44' }] });
+    const e2 = await JuBiterConnect.ethereumGetPublicKey({ bundle: [{ path: 'm/44' }] });
     if (e2.success) e2.payload.path;
 };
 
 export const ethereumSignTransaction = async () => {
-    const sign = await TrezorConnect.ethereumSignTransaction({
+    const sign = await JuBiterConnect.ethereumSignTransaction({
         path: 'm/44',
         transaction: {
             nonce: '0x0',
@@ -136,7 +136,7 @@ export const ethereumSignTransaction = async () => {
     }
 
     // eip1559 transaction
-    TrezorConnect.ethereumSignTransaction({
+    JuBiterConnect.ethereumSignTransaction({
         path: 'm/44',
         transaction: {
             nonce: '0x0',
@@ -151,7 +151,7 @@ export const ethereumSignTransaction = async () => {
         },
     });
 
-    TrezorConnect.ethereumSignTransaction({
+    JuBiterConnect.ethereumSignTransaction({
         path: 'm/44',
         // $FlowExpectedError: combined gasPrice + maxFeePerGas
         transaction: {
@@ -170,7 +170,7 @@ export const ethereumSignTransaction = async () => {
 };
 
 export const signMessage = async () => {
-    const sign = await TrezorConnect.ethereumSignMessage({
+    const sign = await JuBiterConnect.ethereumSignMessage({
         path: 'm/44',
         message: 'foo',
         hex: false,
@@ -180,7 +180,7 @@ export const signMessage = async () => {
         (payload.address: string);
         (payload.signature: string);
     }
-    const verify = await TrezorConnect.ethereumVerifyMessage({
+    const verify = await JuBiterConnect.ethereumVerifyMessage({
         address: 'a',
         signature: 'a',
         message: 'foo',
@@ -194,7 +194,7 @@ export const signMessage = async () => {
 
 export const signTypedData = async () => {
     // $FlowIssue with `await` and Promises: https://github.com/facebook/flow/issues/5294 TODO: Update flow
-    const sign = await TrezorConnect.ethereumSignTypedData({
+    const sign = await JuBiterConnect.ethereumSignTypedData({
         path: 'm/44',
         data: {
             types: {
@@ -240,7 +240,7 @@ export const signTypedData = async () => {
         (payload.network: string);
     }
 
-    await TrezorConnect.ethereumSignTypedData({
+    await JuBiterConnect.ethereumSignTypedData({
         path: 'm/44',
         data: {
             types: {
@@ -257,7 +257,7 @@ export const signTypedData = async () => {
     });
 
     // $FlowExpectedError `message_hash` is given, but it's an invalid type.
-    await TrezorConnect.ethereumSignTypedData({
+    await JuBiterConnect.ethereumSignTypedData({
         path: 'm/44',
         data: {
             types: {

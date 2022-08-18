@@ -1,8 +1,8 @@
-import TrezorConnect from '../index';
+import JuBiterConnect from '../index';
 
 export const binanceGetAddress = async () => {
     // regular
-    const singleAddress = await TrezorConnect.binanceGetAddress({ path: 'm/44' });
+    const singleAddress = await JuBiterConnect.binanceGetAddress({ path: 'm/44' });
     if (singleAddress.success) {
         const { payload } = singleAddress;
         payload.address;
@@ -15,7 +15,7 @@ export const binanceGetAddress = async () => {
     }
 
     // bundle
-    const bundleAddress = await TrezorConnect.binanceGetAddress({ bundle: [{ path: 'm/44' }] });
+    const bundleAddress = await JuBiterConnect.binanceGetAddress({ bundle: [{ path: 'm/44' }] });
     if (bundleAddress.success) {
         bundleAddress.payload.forEach(item => {
             item.address;
@@ -29,7 +29,7 @@ export const binanceGetAddress = async () => {
     }
 
     // with all possible params
-    TrezorConnect.binanceGetAddress({
+    JuBiterConnect.binanceGetAddress({
         device: {
             path: '1',
             instance: 1,
@@ -46,18 +46,18 @@ export const binanceGetAddress = async () => {
 
     // with invalid params
     // @ts-ignore
-    TrezorConnect.binanceGetAddress();
+    JuBiterConnect.binanceGetAddress();
     // @ts-ignore
-    TrezorConnect.binanceGetAddress({ useEmptyPassphrase: true });
+    JuBiterConnect.binanceGetAddress({ useEmptyPassphrase: true });
     // @ts-ignore
-    TrezorConnect.binanceGetAddress({ path: 1 });
+    JuBiterConnect.binanceGetAddress({ path: 1 });
     // @ts-ignore
-    TrezorConnect.binanceGetAddress({ bundle: 1 });
+    JuBiterConnect.binanceGetAddress({ bundle: 1 });
 };
 
 export const binanceGetPublicKey = async () => {
     // regular
-    const singlePK = await TrezorConnect.binanceGetPublicKey({ path: 'm/44' });
+    const singlePK = await JuBiterConnect.binanceGetPublicKey({ path: 'm/44' });
     if (singlePK.success) {
         const { payload } = singlePK;
         payload.path;
@@ -70,7 +70,7 @@ export const binanceGetPublicKey = async () => {
     }
 
     // bundle
-    const bundlePK = await TrezorConnect.binanceGetPublicKey({ bundle: [{ path: 'm/44' }] });
+    const bundlePK = await JuBiterConnect.binanceGetPublicKey({ bundle: [{ path: 'm/44' }] });
     if (bundlePK.success) {
         bundlePK.payload.forEach(item => {
             item.path;
@@ -85,7 +85,7 @@ export const binanceGetPublicKey = async () => {
 };
 
 export const binanceSignTransaction = async () => {
-    const sign = await TrezorConnect.binanceSignTransaction({
+    const sign = await JuBiterConnect.binanceSignTransaction({
         path: 'm/44',
         transaction: {
             chain_id: 'Binance-Chain-Nile',

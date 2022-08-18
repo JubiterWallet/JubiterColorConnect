@@ -1,8 +1,8 @@
 /* @flow */
 
 export const ERROR_CODES = {
-    Init_NotInitialized: 'TrezorConnect not yet initialized', // race condition: call on not initialized Core (usually hot-reloading)
-    Init_AlreadyInitialized: 'TrezorConnect has been already initialized', // thrown by .init called multiple times
+    Init_NotInitialized: 'JuBiterConnect not yet initialized', // race condition: call on not initialized Core (usually hot-reloading)
+    Init_AlreadyInitialized: 'JuBiterConnect has been already initialized', // thrown by .init called multiple times
     Init_IframeBlocked: 'Iframe blocked', // iframe injection blocked (ad-blocker)
     Init_IframeTimeout: 'Iframe timeout', // iframe didn't load in specified time
     Init_ManifestMissing:
@@ -46,7 +46,7 @@ export const ERROR_CODES = {
     Device_CallInProgress: 'Device call in progress', // thrown when trying to make another call while current is still running
 };
 
-export class TrezorError extends Error {
+export class JuBiterError extends Error {
     code: string;
 
     message: string;
@@ -59,7 +59,7 @@ export class TrezorError extends Error {
 }
 
 export const TypedError = (id: $Keys<typeof ERROR_CODES>, message?: string) =>
-    new TrezorError(id, message || ERROR_CODES[id]);
+    new JuBiterError(id, message || ERROR_CODES[id]);
 
 // a slight hack
 // this error string is hard-coded

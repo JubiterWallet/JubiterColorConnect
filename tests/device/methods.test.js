@@ -1,12 +1,12 @@
 import chalk from 'chalk';
-import TrezorConnect from '../../src/js/index';
+import JuBiterConnect from '../../src/js/index';
 import fixtures from '../__fixtures__';
 
-const { getController, setup, skipTest, conditionalTest, initTrezorConnect } = global.Trezor;
+const { getController, setup, skipTest, conditionalTest, initJuBiterConnect } = global.Trezor;
 
 let controller;
 
-describe(`TrezorConnect methods`, () => {
+describe(`JuBiterConnect methods`, () => {
     afterAll(done => {
         // reset controller at the end
         if (controller) {
@@ -17,7 +17,7 @@ describe(`TrezorConnect methods`, () => {
     });
 
     fixtures.forEach(testCase => {
-        describe(`TrezorConnect.${testCase.method}`, () => {
+        describe(`JuBiterConnect.${testCase.method}`, () => {
             beforeAll(async done => {
                 try {
                     if (!controller) {
@@ -29,7 +29,7 @@ describe(`TrezorConnect methods`, () => {
 
                     await setup(controller, testCase.setup);
 
-                    await initTrezorConnect(controller);
+                    await initJuBiterConnect(controller);
                     done();
                 } catch (error) {
                     console.log('Controller WS init error', error);
@@ -38,7 +38,7 @@ describe(`TrezorConnect methods`, () => {
             }, 40000);
 
             afterAll(done => {
-                TrezorConnect.dispose();
+                JuBiterConnect.dispose();
                 done();
             });
 
@@ -62,7 +62,7 @@ describe(`TrezorConnect methods`, () => {
                         await setup(controller, t.setup || testCase.setup);
 
                         controller.options.name = t.description;
-                        const result = await TrezorConnect[testCase.method](t.params);
+                        const result = await JuBiterConnect[testCase.method](t.params);
                         let expected = t.result
                             ? { success: true, payload: t.result }
                             : { success: false };

@@ -17,7 +17,7 @@
     },
     "build": {
         "appId": "${name}",
-        "productName": "TrezorConnectExample",
+        "productName": "JuBiterConnectExample",
         "copyright": "Copyright © year ${author}",
         "asar": false,
         "electronVersion": "8.2.5",
@@ -48,8 +48,8 @@
             "target": "zip"
         },
         "linux": {
-            "executableName": "TrezorConnectExample",
-            "artifactName": "TrezorConnectExample.${ext}",
+            "executableName": "JuBiterConnectExample",
+            "artifactName": "JuBiterConnectExample.${ext}",
             "target": "AppImage"
         },
         "win": {

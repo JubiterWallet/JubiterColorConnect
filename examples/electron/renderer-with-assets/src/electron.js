@@ -23,8 +23,8 @@ function init() {
     mainWindow.loadURL(rendererSrc);
 
     if (!isDev) {
-        // filter all requests to trezor-bridge and change origin
-        // trezor-bridge does not accept origin "file://"
+        // filter all requests to jubiter-bridge and change origin
+        // jubiter-bridge does not accept origin "file://"
         const filter = {
             urls: ['http://127.0.0.1:21325/*'],
         };

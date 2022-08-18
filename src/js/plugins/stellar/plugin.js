@@ -3,7 +3,7 @@ const StellarSdk = require('stellar-sdk');
 const BigNumber = require('bignumber.js');
 
 /**
- * Transforms StellarSdk.Signer to TrezorConnect.StellarTransaction.Signer
+ * Transforms StellarSdk.Signer to JuBiterConnect.StellarTransaction.Signer
  * @param {StellarSdk.Signer} signer
  * @returns { type: 1 | 2 | 3, key: string, weight: number }
  */
@@ -31,7 +31,7 @@ const transformSigner = signer => {
 };
 
 /**
- * Transforms StellarSdk.Asset to TrezorConnect.StellarTransaction.Asset
+ * Transforms StellarSdk.Asset to JuBiterConnect.StellarTransaction.Asset
  * @param {StellarSdk.Asset} asset
  * @returns { type: 0 | 1 | 2, code: string, issuer?: string }
  */
@@ -57,7 +57,7 @@ const transformAsset = asset => {
 const transformAmount = amount => new BigNumber(amount).times(10000000).toString();
 
 /**
- * Transforms StellarSdk.Memo to TrezorConnect.StellarTransaction.Memo
+ * Transforms StellarSdk.Memo to JuBiterConnect.StellarTransaction.Memo
  * @param {string} type
  * @returns {string}
  */
@@ -79,14 +79,14 @@ const transformMemo = memo => {
 };
 
 /**
- * Transforms StellarSdk.Transaction.timeBounds to TrezorConnect.StellarTransaction.timebounds
+ * Transforms StellarSdk.Transaction.timeBounds to JuBiterConnect.StellarTransaction.timebounds
  * @param {string} path
  * @param {StellarSdk.Transaction.timeBounds} timebounds
  * @returns {minTime: number, maxTime: number}
  */
 const transformTimebounds = timebounds => {
     if (!timebounds) return undefined;
-    // those values are defined in Trezor firmware messages as numbers
+    // those values are defined in JuBiter firmware messages as numbers
     return {
         minTime: Number.parseInt(timebounds.minTime, 10),
         maxTime: Number.parseInt(timebounds.maxTime, 10),
@@ -94,10 +94,10 @@ const transformTimebounds = timebounds => {
 };
 
 /**
- * Transforms StellarSdk.Transaction to TrezorConnect.StellarTransaction
+ * Transforms StellarSdk.Transaction to JuBiterConnect.StellarTransaction
  * @param {string} path
  * @param {StellarSdk.Transaction} transaction
- * @returns {TrezorConnect.StellarTransaction}
+ * @returns {JuBiterConnect.StellarTransaction}
  */
 const transformTransaction = (path, transaction) => {
     const amounts = ['amount', 'sendMax', 'destAmount', 'startingBalance', 'limit', 'buyAmount'];

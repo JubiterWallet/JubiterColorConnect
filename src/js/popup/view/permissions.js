@@ -9,13 +9,13 @@ import type { RequestPermission } from '../../types/events';
 const getPermissionText = (permissionType: string, _deviceName: string) => {
     switch (permissionType) {
         case 'read':
-            return 'Read public keys from Trezor device';
+            return 'Read public keys from JuBiter device';
         case 'read-meta':
-            return 'Read metadata from Trezor device';
+            return 'Read metadata from JuBiter device';
         case 'write':
-            return 'Prepare Trezor device for transaction and data signing';
+            return 'Prepare JuBiter device for transaction and data signing';
         case 'write-meta':
-            return 'Write metadata to Trezor device';
+            return 'Write metadata to JuBiter device';
         case 'management':
             return 'Modify device settings';
         case 'custom-message':
@@ -34,7 +34,7 @@ const getPermissionTooltipText = (permissionType: string) => {
         case 'management':
             return 'Permission needed to change device settings, such as PIN, passphrase, label or seed.';
         case 'custom-message':
-            return 'Development tool. Use at your own risk. Allows service to send arbitrary data to your Trezor device.';
+            return 'Development tool. Use at your own risk. Allows service to send arbitrary data to your JuBiter device.';
         default:
             return '';
     }

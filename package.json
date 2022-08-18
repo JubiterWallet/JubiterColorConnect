@@ -1,21 +1,21 @@
 {
-    "name": "trezor-connect",
+    "name": "JubiterColorConnect",
     "version": "8.2.10",
-    "author": "Trezor <info@trezor.io>",
-    "homepage": "https://github.com/trezor/connect",
+    "author": "JuBiter <info@jubiter.io>",
+    "homepage": "https://github.com/JubiterWallet/JubiterColorConnect",
     "description": "High-level javascript interface for Trezor hardware wallet.",
     "license": "SEE LICENSE IN LICENSE.md",
     "private": true,
     "repository": {
         "type": "git",
-        "url": "git://github.com/trezor/connect.git"
+        "url": "git://github.com/JubiterWallet/JubiterColorConnect.git"
     },
     "bugs": {
-        "url": "https://github.com/trezor/connect/issues"
+        "url": "https://github.com/JubiterWallet/JubiterColorConnect/issues"
     },
     "keywords": [
-        "Trezor",
-        "trezor-connect",
+        "JuBiter",
+        "JubiterConnect",
         "javascript"
     ],
     "main": "src/js/index.js",
@@ -36,13 +36,13 @@
         "build:node": "rm -rf build && webpack --config ./webpack/config.nodejs.babel.js --progress",
         "build:react-native": "rm -rf build && webpack --config ./webpack/config.reactnative.babel.js --progress",
         "build:inline": "webpack --config ./webpack/config.inline.babel.js --progress",
-        "build:connect": "yarn build && yarn build:inline && cp ./build/js/trezor-connect.*.js ./build/trezor-connect.min.js && cp robots.txt build/robots.txt",
+        "build:connect": "yarn build && yarn build:inline && cp ./build/js/JubiterColorConnect.*.js ./build/JubiterColorConnect.min.js && cp robots.txt build/robots.txt",
         "build:npm": "rm -rf npm && babel-node ./scripts/build-npm.js && babel ./npm/lib --out-dir ./npm/lib",
         "build:npm-extended": "rm -rf npm-extended && babel-node ./scripts/build-npm-extended.js && babel ./npm-extended/lib --out-dir ./npm-extended/lib",
-        "version:beta": "yarn bump prerelease ./package.json ./README.md ./src/js/data/ConnectSettings.js ./src/js/plugins/webextension/trezor-usb-permissions.js",
-        "version:patch": "yarn bump patch ./package.json ./README.md ./src/js/data/ConnectSettings.js ./src/js/plugins/webextension/trezor-usb-permissions.js",
-        "version:minor": "yarn bump minor ./package.json ./README.md ./src/js/data/ConnectSettings.js ./src/js/plugins/webextension/trezor-usb-permissions.js",
-        "version:major": "yarn bump major ./package.json ./README.md ./src/js/data/ConnectSettings.js ./src/js/plugins/webextension/trezor-usb-permissions.js",
+        "version:beta": "yarn bump prerelease ./package.json ./README.md ./src/js/data/ConnectSettings.js ./src/js/plugins/webextension/jubiter-usb-permissions.js",
+        "version:patch": "yarn bump patch ./package.json ./README.md ./src/js/data/ConnectSettings.js ./src/js/plugins/webextension/jubiter-usb-permissions.js",
+        "version:minor": "yarn bump minor ./package.json ./README.md ./src/js/data/ConnectSettings.js ./src/js/plugins/webextension/jubiter-usb-permissions.js",
+        "version:major": "yarn bump major ./package.json ./README.md ./src/js/data/ConnectSettings.js ./src/js/plugins/webextension/jubiter-usb-permissions.js",
         "stats": "webpack --config ./webpack/config.prod.babel.js --json > build/stats.json",
         "test:unit": "jest --verbose -c jest.config.unit.js",
         "test:integration": "jest --verbose -c jest.config.integration.js",

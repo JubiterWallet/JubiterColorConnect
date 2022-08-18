@@ -16,7 +16,7 @@ import {
 } from './env/node';
 import type { API } from './types';
 
-const TrezorConnect: API = {
+const JuBiterConnect: API = {
     manifest,
     init,
     getSettings,
@@ -203,7 +203,7 @@ const TrezorConnect: API = {
     disableWebUSB,
 };
 
-export default TrezorConnect;
+export default JuBiterConnect;
 
 export * from './constants';
 export * from './types';

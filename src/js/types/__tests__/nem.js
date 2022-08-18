@@ -1,9 +1,9 @@
 /* @flow */
-import TrezorConnect from '../../index';
+import JuBiterConnect from '../../index';
 
 export const nemGetAddress = async () => {
     // regular
-    const singleAddress = await TrezorConnect.nemGetAddress({ path: 'm/44', network: 1 });
+    const singleAddress = await JuBiterConnect.nemGetAddress({ path: 'm/44', network: 1 });
     (singleAddress.success: boolean);
     if (singleAddress.success) {
         const { payload } = singleAddress;
@@ -13,7 +13,7 @@ export const nemGetAddress = async () => {
     }
 
     // bundle
-    const bundleAddress = await TrezorConnect.nemGetAddress({
+    const bundleAddress = await JuBiterConnect.nemGetAddress({
         bundle: [{ path: 'm/44', network: 1 }],
     });
     (bundleAddress.success: boolean);
@@ -28,7 +28,7 @@ export const nemGetAddress = async () => {
     }
 
     // with all possible params
-    TrezorConnect.nemGetAddress({
+    JuBiterConnect.nemGetAddress({
         device: {
             path: '1',
             instance: 1,
@@ -45,7 +45,7 @@ export const nemGetAddress = async () => {
     });
 
     // $FlowExpectedError: payload is Address
-    const e1 = await TrezorConnect.nemGetAddress({ path: 'm/44', network: 1 });
+    const e1 = await JuBiterConnect.nemGetAddress({ path: 'm/44', network: 1 });
     if (e1.success) {
         e1.payload.forEach(item => {
             (item.address: string);
@@ -53,18 +53,18 @@ export const nemGetAddress = async () => {
     }
 
     // $FlowExpectedError: payload is Address[]
-    const e2 = await TrezorConnect.nemGetAddress({ bundle: [{ path: 'm/44', network: 1 }] });
+    const e2 = await JuBiterConnect.nemGetAddress({ bundle: [{ path: 'm/44', network: 1 }] });
     if (e2.success) e2.payload.address;
 
     // with invalid params
     // $FlowExpectedError
-    TrezorConnect.nemGetAddress();
+    JuBiterConnect.nemGetAddress();
     // $FlowExpectedError
-    TrezorConnect.nemGetAddress({ coin: 'btc' });
+    JuBiterConnect.nemGetAddress({ coin: 'btc' });
     // $FlowExpectedError
-    TrezorConnect.nemGetAddress({ path: 1 });
+    JuBiterConnect.nemGetAddress({ path: 1 });
     // $FlowExpectedError
-    TrezorConnect.nemGetAddress({ bundle: 1 });
+    JuBiterConnect.nemGetAddress({ bundle: 1 });
 };
 
 export const nemSignTransaction = async () => {
@@ -75,7 +75,7 @@ export const nemSignTransaction = async () => {
         deadline: 74735615,
         signer: 'TALICE2GMA34CXHD7XLJQ536NM5UNKQHTORNNT2J',
     };
-    const sign = await TrezorConnect.nemSignTransaction({
+    const sign = await JuBiterConnect.nemSignTransaction({
         path: 'm/44',
         transaction: {
             ...common,
@@ -95,7 +95,7 @@ export const nemSignTransaction = async () => {
         (payload.signature: string);
     }
 
-    TrezorConnect.nemSignTransaction({
+    JuBiterConnect.nemSignTransaction({
         path: 'm/44',
         transaction: {
             ...common,
@@ -113,7 +113,7 @@ export const nemSignTransaction = async () => {
         },
     });
 
-    TrezorConnect.nemSignTransaction({
+    JuBiterConnect.nemSignTransaction({
         path: 'm/44',
         transaction: {
             ...common,
@@ -127,7 +127,7 @@ export const nemSignTransaction = async () => {
         },
     });
 
-    TrezorConnect.nemSignTransaction({
+    JuBiterConnect.nemSignTransaction({
         path: 'm/44',
         transaction: {
             ...common,
@@ -141,7 +141,7 @@ export const nemSignTransaction = async () => {
         },
     });
 
-    TrezorConnect.nemSignTransaction({
+    JuBiterConnect.nemSignTransaction({
         path: 'm/44',
         transaction: {
             ...common,
@@ -163,7 +163,7 @@ export const nemSignTransaction = async () => {
         },
     });
 
-    TrezorConnect.nemSignTransaction({
+    JuBiterConnect.nemSignTransaction({
         path: 'm/44',
         transaction: {
             ...common,
@@ -185,7 +185,7 @@ export const nemSignTransaction = async () => {
         },
     });
 
-    TrezorConnect.nemSignTransaction({
+    JuBiterConnect.nemSignTransaction({
         path: 'm/44',
         transaction: {
             ...common,
@@ -197,7 +197,7 @@ export const nemSignTransaction = async () => {
         },
     });
 
-    TrezorConnect.nemSignTransaction({
+    JuBiterConnect.nemSignTransaction({
         path: 'm/44',
         transaction: {
             ...common,
@@ -209,7 +209,7 @@ export const nemSignTransaction = async () => {
         },
     });
 
-    TrezorConnect.nemSignTransaction({
+    JuBiterConnect.nemSignTransaction({
         path: 'm/44',
         transaction: {
             ...common,
