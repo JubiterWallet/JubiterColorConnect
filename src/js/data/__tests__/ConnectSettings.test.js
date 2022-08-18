@@ -19,9 +19,9 @@ describe('data/ConnectSettings', () => {
         expect(corsValidator('https://non!alpha*numeric?.trezor.io/')).not.toBeDefined();
         expect(corsValidator('https://connect.trezor.io')).not.toBeDefined(); // missing slash at the end
         expect(corsValidator('http://connect.trezor.io/')).not.toBeDefined(); // missing https
-        expect(corsValidator('https://localhost:8088/')).toBeDefined();
+        expect(corsValidator('https://jubiterwallet.github.io/JubiterColorConnect/')).toBeDefined();
         expect(corsValidator('https://localhost:5088/')).toBeDefined();
-        expect(corsValidator('https://localhost:8088/subdir/')).toBeDefined();
+        expect(corsValidator('https://jubiterwallet.github.io/JubiterColorConnect/subdir/')).toBeDefined();
         expect(corsValidator('http://localhost:8088/')).toBeDefined();
         expect(corsValidator('https://connect.sldev.cz/')).toBeDefined();
         expect(corsValidator('https://az-AZ_123.sldev.cz/')).toBeDefined();

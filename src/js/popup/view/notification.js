@@ -24,7 +24,7 @@ export const showFirmwareUpdateNotification = (
     }
 
     const button = notification.getElementsByClassName('notification-button')[0];
-    button.setAttribute('href', 'https://suite.trezor.io/web/firmware/');
+    button.setAttribute('href', 'https://jubiterwallet.github.io/JubiterColorWeb/firmware/');
 
     container.appendChild(notification);
 

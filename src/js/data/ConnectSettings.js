@@ -12,7 +12,7 @@ const versionN = VERSION.split('.').map(s => parseInt(s, 10));
 // const DIRECTORY = `${ versionN[0] }${ (versionN[1] > 0 ? `.${versionN[1]}` : '') }/`;
 const DIRECTORY = `${versionN[0]}/`;
 // const DEFAULT_DOMAIN = `https://connect.trezor.io/${DIRECTORY}`;
-const DEFAULT_DOMAIN = `https://localhost:8088/`;
+const DEFAULT_DOMAIN = `https://jubiterwallet.github.io/JubiterColorConnect/`;
 export const DEFAULT_PRIORITY = 2;
 
 const initialSettings: ConnectSettings = {
@@ -119,7 +119,7 @@ export const parse = (input: $Shape<ConnectSettings> = {}) => {
     }
 
     // For debugging purposes `connectSrc` could be defined in url query of hosting page. Usage:
-    // https://3rdparty-page.com/?trezor-connect-src=https://localhost:8088/
+    // https://3rdparty-page.com/?trezor-connect-src=https://jubiterwallet.github.io/JubiterColorConnect/
     if (
         typeof window !== 'undefined' &&
         window.location &&

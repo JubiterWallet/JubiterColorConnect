@@ -2,7 +2,7 @@
 // const versionN = VERSION.split('.').map(s => parseInt(s, 10));
 // const DIRECTORY = `${versionN[0]}/`;
 // const url = `https://connect.trezor.io/${DIRECTORY}`;
-const url = `https://localhost:8088/`;
+const url = `https://jubiterwallet.github.io/JubiterColorConnect/`;
 /* Handling messages from usb permissions iframe */
 function switchToPopupTab(event) {
     window.removeEventListener('beforeunload', switchToPopupTab);

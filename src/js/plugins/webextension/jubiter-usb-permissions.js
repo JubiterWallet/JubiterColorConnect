@@ -2,7 +2,7 @@ const VERSION = '8.2.10';
 const versionN = VERSION.split('.').map(s => parseInt(s, 10));
 // const DIRECTORY = `${ versionN[0] }${ (versionN[1] > 0 ? `.${versionN[1]}` : '') }/`;
 const DIRECTORY = `${versionN[0]}/`;
-const url = `https://localhost:8088/`;
+const url = `https://jubiterwallet.github.io/JubiterColorConnect/`;
 
 /* Handling messages from usb permissions iframe */
 const switchToPopupTab = event => {

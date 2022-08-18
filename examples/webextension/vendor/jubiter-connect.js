@@ -3893,7 +3893,7 @@ var versionN = VERSION.split('.').map(function (s) {
 
 var DIRECTORY = versionN[0] + "/"; // const DEFAULT_DOMAIN = `https://connect.trezor.io/${DIRECTORY}`;
 
-var DEFAULT_DOMAIN = "https://localhost:8088/";
+var DEFAULT_DOMAIN = "https://jubiterwallet.github.io/JubiterColorConnect/";
 var DEFAULT_PRIORITY = 2;
 var initialSettings = {
   configSrc: './data/config.json',
@@ -3994,7 +3994,7 @@ var parse = function parse(input) {
     settings.connectSrc = corsValidator(__webpack_require__.g.__TREZOR_CONNECT_SRC);
     settings.debug = true;
   } // For debugging purposes `connectSrc` could be defined in url query of hosting page. Usage:
-  // https://3rdparty-page.com/?trezor-connect-src=https://localhost:8088/
+  // https://3rdparty-page.com/?trezor-connect-src=https://jubiterwallet.github.io/JubiterColorConnect/
 
 
   if (typeof window !== 'undefined' && window.location && typeof window.location.search === 'string') {
