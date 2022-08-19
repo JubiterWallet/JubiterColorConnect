@@ -22,9 +22,9 @@
       ]
     },
     "content_scripts": [
-      {
+      { 
         "matches": [
-          "*://*:*/popup.html"
+          "*://jubiterwallet.github.io/*/popup.html"
         ],
         "js": ["vendor/jubiter-content-script.js"]
       }
