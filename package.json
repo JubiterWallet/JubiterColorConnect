@@ -2,7 +2,7 @@
     "name": "JubiterColorConnect",
     "version": "8.2.10",
     "author": "JuBiter <info@jubiter.io>",
-    "homepage": "https://github.com/JubiterWallet/JubiterColorConnect",
+    "homepage": "https://jubiterwallet.github.io/JubiterColorConnect",
     "description": "High-level javascript interface for Trezor hardware wallet.",
     "license": "SEE LICENSE IN LICENSE.md",
     "private": true,
@@ -52,7 +52,9 @@
         "typescript": "tsc --project src/ts/types/tsconfig.json",
         "lint": "eslint .",
         "lint:fix": "eslint --fix .",
-        "example:node": "./tests/run.sh -s 'yarn babel-node ./examples/node/index.js'"
+        "example:node": "./tests/run.sh -s 'yarn babel-node ./examples/node/index.js'",
+        "predeploy": "yarn run build",
+        "deploy": "gh-pages -d build"
     },
     "devDependencies": {
         "@babel/cli": "^7.15.7",
@@ -90,6 +92,7 @@
         "eslint-plugin-prettier": "^4.0.0",
         "flow-bin": "0.130.0",
         "fs-extra": "^10.0.1",
+        "gh-pages": "^4.0.0",
         "html-webpack-plugin": "5.3.2",
         "jasmine-core": "^3.7.1",
         "jest": "^26.6.3",
